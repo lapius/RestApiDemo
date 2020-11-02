@@ -6,10 +6,15 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using RestDemo.Contexts;
+using RestDemo.Entities;
+using RestDemo.Interfaces;
+using RestDemo.Repository;
 
 namespace RestDemo
 {
@@ -26,6 +31,8 @@ namespace RestDemo
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddDbContext<WeatherContext>(op => op.UseSqlServer(Configuration["ConnectionString:RestDemoDB"]));
+            services.AddScoped<IWeatherRepository<WeatherInfo>, WeatherRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

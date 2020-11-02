@@ -1,0 +1,18 @@
+<div>
+<table>
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <th>Degrees</th>
+            <th>Date and Time</th>
+            <th>Actions</th>
+        </tr>
+        <tr *ngFor="let wInfo of weatherinfos" >
+            <td> {{ wInfo.id }} </td>
+            <td> {{ wInfo.degrees }} </td>
+            <td> {{ wInfo.dateTime }} </td>
+            <td> todo: buttons to edit and delete   </td>
+        </tr>
+    </tbody>
+</table>
+</div>
