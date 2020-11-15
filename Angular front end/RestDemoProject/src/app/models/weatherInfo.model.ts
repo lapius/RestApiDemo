@@ -1,5 +1,5 @@
 export interface WeatherInfo {
-    id: number;
-    degree: number;
+    id?: number;
+    degrees: number;
     dateTime: string;
 }

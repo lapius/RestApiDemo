@@ -1,3 +1,15 @@
+<div *ngIf="insertRecord">
+    <input [(ngModel)]="newWeather.degrees" type="number" step="0.5" >
+    <input [(ngModel)]="newWeather.dateTime" type=datetime-local step=60 />
+    <button mat-flat-button color="primary" (click)="PostWeather()">Add weather info</button>
+</div>
+<div *ngIf="editingRecord">
+    <input [(ngModel)]="editingWeatherRecord.degrees" type="number" step="0.5" >
+    <input [(ngModel)]="editingWeatherRecord.dateTime" type=datetime-local step=60 />
+    <button mat-flat-button color="primary" (click)="PutWeather()">Edit weather info</button>
+</div>
+<br>
+<br>
 <div>
 <table>
     <tbody>
@@ -11,7 +23,8 @@
             <td> {{ wInfo.id }} </td>
             <td> {{ wInfo.degrees }} </td>
             <td> {{ wInfo.dateTime }} </td>
-            <td> todo: buttons to edit and delete   </td>
+            <td><button mat-flat-button color="primary" (click)="DeleteWeather(wInfo.id)">Delete</button> 
+                <button mat-flat-button color="primary" (click)="editButton(wInfo.id)">Edit</button></td>
         </tr>
     </tbody>
 </table>
